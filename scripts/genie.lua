@@ -383,10 +383,22 @@ function exampleProjectDefaults()
 			"Optimize"
 		}
 
-	configuration { "linux-* or freebsd" }
+	configuration { "linux-* or freebsd", "not linux-gcw0-gcc" }
 		links {
 			"X11",
 			"GL",
+			"pthread",
+		}
+		
+	configuration { "linux-gcw0-gcc" }
+		defines {
+			"BGFX_CONFIG_RENDERER_OPENGL=0",
+			"BGFX_CONFIG_RENDERER_OPENGLES=1",
+		}
+		links {
+			"SDL2",
+			"EGL",
+			"GLESv2",
 			"pthread",
 		}
 
