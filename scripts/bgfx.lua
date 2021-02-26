@@ -65,9 +65,13 @@ function bgfxProjectBase(_kind, _defines)
 				"-fPIC",
 			}
 			links {
+				"pthread",
+			}
+		
+		configuration { "linux-*", "not linux-gcw0-gcc" }
+			links {
 				"X11",
 				"GL",
-				"pthread",
 			}
 
 		configuration { "android*" }
@@ -92,6 +96,18 @@ function bgfxProjectBase(_kind, _defines)
 
 		configuration {}
 	end
+
+
+	configuration { "linux-gcw0-gcc" }
+		defines {
+			"BGFX_CONFIG_RENDERER_OPENGL=0",
+			"BGFX_CONFIG_RENDERER_OPENGLES=1",
+		}
+		links {
+			"GLESv2",
+			"EGL",
+			"SDL2",
+		}
 
 	includedirs {
 		path.join(BGFX_DIR, "3rdparty"),
