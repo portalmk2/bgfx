@@ -73,6 +73,9 @@ function bgfxProjectBase(_kind, _defines)
 				"X11",
 				"GL",
 			}
+			
+		configuration { "linux-gcw0-gcc", "Debug or Release" }			
+			targetextension ".so"
 
 		configuration { "android*" }
 			targetextension ".so"
