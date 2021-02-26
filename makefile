@@ -57,7 +57,7 @@ projgen: ## Generate project files for all configurations.
 	$(GENIE)              --with-combined-examples                   --gcc=ios-simulator   gmake
 	$(GENIE)              --with-combined-examples                   --gcc=ios-simulator64 gmake
 	$(GENIE)              --with-combined-examples                   --gcc=rpi             gmake
-	$(GENIE)                                       --with-shared-lib --gcc=linux-gcw0-gcc  gmake
+	$(GENIE) --with-sdl   --with-         examples --with-shared-lib --gcc=linux-gcw0-gcc  gmake
 
 idl: ## Generate code from IDL.
 	@echo Generating code from IDL.
@@ -112,12 +112,12 @@ linux-release64: .build/projects/gmake-linux ## Build - Linux x64 Release
 linux: linux-debug64 linux-release64 ## Build - Linux x86/x64 Debug and Release
 
 .build/projects/gmake-linux-gcw0-gcc:
-	$(GENIE) --with-tools --with-combined-examples --with-shared-lib --gcc=linux-gcw0-gcc gmake
+	$(GENIE) --with-sdl --with-examples --with-shared-lib --gcc=linux-gcw0-gcc gmake
 linux-gcw0-debug: .build/projects/gmake-linux-gcw0-gcc ## Build - GCW0 Linux Debug
 	$(MAKE) -R -C .build/projects/gmake-linux-gcw0-gcc config=debug
 linux-gcw0-release: .build/projects/gmake-linux-gcw0-gcc ## Build - GCW0 Linux Release
 	$(MAKE) -R -C .build/projects/gmake-linux-gcw0-gcc config=release
-
+	
 .build/projects/gmake-freebsd:
 	$(GENIE) --with-tools --with-combined-examples --with-shared-lib --gcc=freebsd gmake
 freebsd-debug32: .build/projects/gmake-freebsd ## Build - FreeBSD x86 Debug

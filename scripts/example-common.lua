@@ -57,9 +57,15 @@ project ("example-common")
 	}
 
 	if _OPTIONS["with-sdl"] then
-		defines {
-			"ENTRY_CONFIG_USE_SDL=1",
-		}
+		configuration { "not linux-gcw0-gcc" }
+			defines { "ENTRY_CONFIG_USE_SDL=1" }
+		configuration { "linux-gcw0-gcc" }
+			defines { 
+				"ENTRY_CONFIG_USE_NOOP=1",
+				"ENTRY_CONFIG_USE_SDL=0",
+			}
+		configuration {}
+		
 		includedirs {
 			"$(SDL2_DIR)/include",
 		}

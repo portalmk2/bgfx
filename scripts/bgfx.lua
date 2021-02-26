@@ -164,7 +164,7 @@ function bgfxProjectBase(_kind, _defines)
 			"-weak_framework MetalKit",
 		}
 
-	configuration { "not NX32", "not NX64" }
+	configuration { "not NX32", "not NX64", "not linux-gcw0-gcc" }
 		includedirs {
 			-- NX has EGL headers modified...
 			path.join(BGFX_DIR, "3rdparty/khronos"),
