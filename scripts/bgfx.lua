@@ -111,6 +111,7 @@ function bgfxProjectBase(_kind, _defines)
 			"EGL",
 			"SDL2",
 		}
+	configuration {}
 
 	includedirs {
 		path.join(BGFX_DIR, "3rdparty"),
